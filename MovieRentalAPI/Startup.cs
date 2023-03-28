@@ -61,6 +61,8 @@ namespace MovieRentalAPI
             {
                 endpoints.MapControllers();
             });
+
+            AppDbInitializer.Seed(app);
         }
     }
 }
