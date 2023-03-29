@@ -39,6 +39,7 @@ namespace MovieRentalAPI
 
             //Configure the Services
             services.AddTransient<MoviesService>();
+            services.AddTransient<CustomersService>();
 
             services.AddSwaggerGen(c =>
             {
