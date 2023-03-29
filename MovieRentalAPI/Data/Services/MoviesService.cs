@@ -1,5 +1,7 @@
 ﻿using MovieRentalAPI.Models;
 using MovieRentalAPI.Models.ViewModels;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace MovieRentalAPI.Data.Services
 {
@@ -23,5 +25,15 @@ namespace MovieRentalAPI.Data.Services
             _context.Movies.Add(_movie);
             _context.SaveChanges();
         }
+
+
+       
+        public List<Movie> GetAllMovies() => _context.Movies.ToList();
+
+
+        public Movie GetMoviesById(int MovieId) => _context.Movies.FirstOrDefault(m => m.Id == MovieId);
+
+
+
     }
 }

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using MovieRentalAPI.Data.Services;
 using MovieRentalAPI.Models.ViewModels;
+using System.Security.Cryptography.X509Certificates;
 
 namespace MovieRentalAPI.Controllers
 {
@@ -14,6 +15,20 @@ namespace MovieRentalAPI.Controllers
         public MoviesController(MoviesService moviesService)
         {
             _moviesService = moviesService;
+        }
+
+        [HttpGet("get-all-movies")]
+        public IActionResult GetAllMovies()
+        {
+            var allMovie = _moviesService.GetAllMovies();
+            return Ok(allMovie);
+        }
+
+        [HttpGet("get-movie-by-id/{id}")]
+        public IActionResult GetMovieById(int id)
+        {
+            var Movie = _moviesService.GetMoviesById(id);
+            return Ok(Movie);
         }
 
         [HttpPost("add-movie")]

@@ -16,6 +16,21 @@ namespace MovieRentalAPI.Controllers
             _customersService = customersService;
         }
 
+
+        [HttpGet("get-all-customer")]
+        public IActionResult GetAllCustomer()
+        {
+            var allCustomer = _customersService.GetAllCustomer();
+            return Ok(allCustomer);
+        }
+
+        [HttpGet("get-customer-by-id/{id}")]
+        public IActionResult GetCustomerById(int id)
+        {
+            var Customer = _customersService.GetCustomerById(id);
+            return Ok(Customer);
+        }
+
         [HttpPost("add-customer")]
         public IActionResult AddCustomer([FromBody] CustomerVM customer)
         {
