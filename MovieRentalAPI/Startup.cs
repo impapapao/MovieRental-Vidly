@@ -9,6 +9,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using MovieRentalAPI.Data;
+using MovieRentalAPI.Data.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,6 +36,10 @@ namespace MovieRentalAPI
 
             //Configure DBContext wit SQL
             services.AddDbContext<AppDBContext>(options => options.UseSqlServer(ConnectionString));
+
+            //Configure the Services
+            services.AddTransient<MoviesService>();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "MovieRentalAPI", Version = "v1" });
