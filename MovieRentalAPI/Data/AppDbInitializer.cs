@@ -30,6 +30,28 @@ namespace MovieRentalAPI.Data
 
                     context.SaveChanges();
                 }
+
+                if(!context.Customers.Any())
+                {
+                    context.Customers.AddRange(new Customer()
+                    {
+                        FirstName = "John",
+                        LastName = "Smith",
+                        Address = "3915 Hamill Avenue",
+                        City = "San Diego",
+                        Province = "California",
+                    },
+                    new Customer
+                    {
+                        FirstName = "Amelie",
+                        LastName = "Lester",
+                        Address = "555 Hinkle Deegan Lake Road",
+                        City = "Binghamton",
+                        Province = "New York"
+                    });
+
+                    context.SaveChanges();
+                }
             }
         }
     }
