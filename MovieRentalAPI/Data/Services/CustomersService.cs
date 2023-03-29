@@ -58,5 +58,15 @@ namespace MovieRentalAPI.Data.Services
 
             return _customer;
         }
+
+        public void DeleteCustomerById(int CustomerId)
+        {
+            var _customer = _context.Customers.FirstOrDefault(c => c.Id == CustomerId);
+            if(_customer != null)
+            {
+                _context.Customers.Remove(_customer);
+                _context.SaveChanges();
+            }
+        }
     }
 }

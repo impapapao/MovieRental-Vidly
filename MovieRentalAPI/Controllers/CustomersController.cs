@@ -38,11 +38,18 @@ namespace MovieRentalAPI.Controllers
             return Ok();
         }
 
-        [HttpPut]
+        [HttpPut("update-customer-by-id/{id}")]
         public IActionResult UpdateById(int id , [FromBody] CustomerVM customer)
         {
             var updateCustomer = _customersService.UpdateCustomerById(id, customer);
             return Ok(updateCustomer);
+        }
+
+        [HttpDelete("delete-customer-by-id/{id}")]
+        public IActionResult DeleteById(int id)
+        {
+            _customersService.DeleteCustomerById(id);
+            return Ok();
         }
     }
 }

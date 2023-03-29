@@ -44,5 +44,12 @@ namespace MovieRentalAPI.Controllers
             var updateMovie = _moviesService.UpdateMovieById(id, movie);
             return Ok(updateMovie);
         }
+
+        [HttpDelete("delete-movie-by-id/{id}")]
+        public IActionResult DeleteMovieById(int id)
+        {
+            _moviesService.DeleteMovieById(id);
+            return Ok();
+        }
     }
 }
