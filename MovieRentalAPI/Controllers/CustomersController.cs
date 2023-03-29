@@ -37,5 +37,12 @@ namespace MovieRentalAPI.Controllers
             _customersService.AddCustomer(customer);
             return Ok();
         }
+
+        [HttpPut]
+        public IActionResult UpdateById(int id , [FromBody] CustomerVM customer)
+        {
+            var updateCustomer = _customersService.UpdateCustomerById(id, customer);
+            return Ok(updateCustomer);
+        }
     }
 }

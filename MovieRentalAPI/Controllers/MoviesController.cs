@@ -37,5 +37,12 @@ namespace MovieRentalAPI.Controllers
             _moviesService.AddMovie(movie);
             return Ok();
         }
+
+        [HttpPut("update-movie-by-id/{id}")]
+        public IActionResult UpdateMovieById(int id, [FromBody]MovieVM movie)
+        {
+            var updateMovie = _moviesService.UpdateMovieById(id, movie);
+            return Ok(updateMovie);
+        }
     }
 }

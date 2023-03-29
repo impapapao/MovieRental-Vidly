@@ -34,6 +34,19 @@ namespace MovieRentalAPI.Data.Services
         public Movie GetMoviesById(int MovieId) => _context.Movies.FirstOrDefault(m => m.Id == MovieId);
 
 
+        public Movie UpdateMovieById(int movieId, MovieVM movie)
+        {
+            var _movie = _context.Movies.FirstOrDefault(m => m.Id == movieId);
+            if (_movie != null)
+            {
+                _movie.MovieTitle = movie.MovieTitle;
+                _movie.MovieDescription = movie.MovieDescription;
+                _movie.Genre = movie.Genre;
 
+                _context.SaveChanges();
+            }
+
+            return _movie;
+        }
     }
 }
